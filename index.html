@@ -1,12 +1,498 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angelverein Gut Biss</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Angelverein Gut Biss | Breitlingsee</title>
+
+  <meta name="description"
+        content="Angelverein Gut Biss am Breitlingsee in Brandenburg an der Havel. Informationen zu Mitgliedschaft, Bootsliegeplätzen, Angelkarten und Bootsvermietung.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #253129;
+      background: #f7f8f5;
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(24, 67, 48, 0.97);
+      padding: 14px 20px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Titelbild */
+
+    .hero {
+      min-height: 72vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.48)),
+        url("vereinsheim.jpg") center center / cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      margin: 0 0 10px;
+      line-height: 1.05;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin-bottom: 30px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* Buttons */
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #ffffff;
+      color: #184330;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 13px 22px;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #edf4ef;
+    }
+
+    .button.green {
+      background: #286447;
+      color: white;
+    }
+
+    /* Inhalte */
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #184330;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+    }
+
+    /* Breitlingsee Bild */
+
+    .lake-image {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Karten */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+    }
+
+    .notice {
+      background: #fff7df;
+      border-left: 5px solid #d6a22c;
+    }
+
+    /* Kontakt */
+
+    .contact {
+      background: #184330;
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact a {
+      color: white;
+    }
+
+    .contact-details {
+      font-size: 1.15rem;
+      margin: 25px 0;
+    }
+
+    /* Anker */
+
+    .anchor-section {
+      position: relative;
+      height: 430px;
+      background:
+        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)),
+        url("anker.jpg") center center / cover no-repeat;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #102e21;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    /* Smartphone */
+
+    @media (max-width: 700px) {
+
+      nav a {
+        margin: 0 7px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        min-height: 65vh;
+      }
+
+      section {
+        padding: 50px 18px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 27px 22px;
+      }
+
+      .anchor-section {
+        height: 320px;
+      }
+    }
+  </style>
 </head>
+
+
 <body>
-    <h1>Willkommen beim Angelverein Gut Biss</h1>
-    <p>Unsere neue Webseite befindet sich im Aufbau.</p>
+
+  <!-- Navigation -->
+
+  <nav>
+    <a href="#verein">Verein</a>
+    <a href="#informationen">Informationen</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+
+  <!-- Großes Titelbild -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <h1>Angelverein Gut Biss</h1>
+
+      <p>
+        Natur erleben • Angeln genießen • Gemeinschaft am Breitlingsee
+      </p>
+
+      <div class="buttons">
+
+        <a class="button" href="#kontakt">
+          Mitglied werden
+        </a>
+
+        <a class="button"
+           href="https://www.angelkarten.com/"
+           target="_blank"
+           rel="noopener">
+          Angelkarten
+        </a>
+
+        <a class="button"
+           href="https://www.malge.com/marina.html"
+           target="_blank"
+           rel="noopener">
+          Bootsvermietung
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- Willkommen -->
+
+  <section id="verein">
+
+    <div class="container intro">
+
+      <h2>Herzlich willkommen beim Angelverein Gut Biss</h2>
+
+      <p>
+        Schön, dass Sie unsere Webseite besuchen.
+      </p>
+
+      <p>
+        Unser Angelverein liegt direkt am wunderschönen
+        <strong>Breitlingsee in Brandenburg an der Havel</strong>
+        und bietet Angelfreunden, Bootsbesitzern und Naturfreunden
+        eine angenehme Gemeinschaft inmitten der Natur.
+      </p>
+
+      <p>
+        Sie haben Fragen rund um unseren Angelverein?
+        Dann sprechen Sie uns gerne an. Ob Informationen zum Vereinsleben,
+        zu Bootsliegeplätzen oder zur Mitgliedschaft – wir helfen Ihnen
+        gerne weiter.
+      </p>
+
+      <p>
+        <strong>Neue Mitglieder sind bei uns herzlich willkommen!</strong>
+      </p>
+
+      <p>
+        Wenn Sie Interesse an unserem Verein haben oder mehr über uns
+        erfahren möchten, freuen wir uns über Ihre Kontaktaufnahme
+        per Telefon oder E-Mail.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Bild vom Breitlingsee -->
+
+  <img
+    class="lake-image"
+    src="breitlingsee.jpg"
+    alt="Blick auf den Breitlingsee beim Angelverein Gut Biss"
+  >
+
+
+  <!-- Angelkarten und Bootsvermietung -->
+
+  <section id="informationen">
+
+    <div class="container">
+
+      <div class="cards">
+
+        <div class="card notice">
+
+          <h2>🎣 Angelkarten</h2>
+
+          <p>
+            <strong>Hinweis für Gastangler:</strong>
+          </p>
+
+          <p>
+            Angelkarten werden nicht direkt durch den
+            Angelverein Gut Biss verkauft.
+          </p>
+
+          <p>
+            Angelkarten können unter anderem bequem online
+            erworben werden.
+          </p>
+
+          <a
+            class="button green"
+            href="https://www.angelkarten.com/"
+            target="_blank"
+            rel="noopener">
+            Angelkarten online kaufen
+          </a>
+
+        </div>
+
+
+        <div class="card">
+
+          <h2>🚤 Bootsvermietung</h2>
+
+          <p>
+            Sie möchten den Breitlingsee mit einem Boot erkunden?
+          </p>
+
+          <p>
+            Informationen zur Bootsvermietung finden Sie
+            bei der Marina Malge.
+          </p>
+
+          <a
+            class="button green"
+            href="https://www.malge.com/marina.html"
+            target="_blank"
+            rel="noopener">
+            Zur Bootsvermietung
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Kontakt -->
+
+  <section class="contact" id="kontakt">
+
+    <div class="container">
+
+      <h2>Kontakt</h2>
+
+      <p>
+        Sie interessieren sich für unseren Verein, eine Mitgliedschaft
+        oder einen Bootsliegeplatz?
+      </p>
+
+      <p>
+        Auch bei anderen Fragen rund um den Angelverein
+        können Sie sich gerne bei uns melden.
+      </p>
+
+      <div class="contact-details">
+
+        <strong>Angelverein Gut Biss</strong><br><br>
+
+        📞
+        <a href="tel:+4915221641524">
+          01522 164 1524
+        </a>
+
+        <br>
+
+        ✉️
+        <a href="mailto:Angelverein-Gut-Biss@gmx.de">
+          Angelverein-Gut-Biss@gmx.de
+        </a>
+
+      </div>
+
+      <div class="buttons">
+
+        <a class="button" href="tel:+4915221641524">
+          Jetzt anrufen
+        </a>
+
+        <a
+          class="button"
+          href="mailto:Angelverein-Gut-Biss@gmx.de">
+          E-Mail schreiben
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Ankerbild -->
+
+  <div
+    class="anchor-section"
+    role="img"
+    aria-label="Anker am Breitlingsee">
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p>
+      <strong>Angelverein Gut Biss</strong>
+    </p>
+
+    <p>
+      Petri Heil und bis bald am Breitlingsee! 🎣
+    </p>
+
+  </footer>
+
 </body>
 </html>
